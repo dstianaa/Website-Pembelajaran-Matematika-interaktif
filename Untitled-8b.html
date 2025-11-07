@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materi & Kuis Garis dan Sudut</title>
+  <style>
+    :root {
+      --blue: #1d4ed8;
+      --blue-light: #dbeafe;
+      --yellow: #fde047;
+      --yellow-light: #fef9c3;
+      --bg: #f0f9ff;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --success: #16a34a;
+      --danger: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    header {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: url('garisudut.jpeg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(29, 78, 216, 0.3);
+    }
+    header h1 {
+      position: relative;
+      z-index: 2;
+      font-size: 32px;
+      color: var(--yellow);
+      text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
+    .creator-box {
+      position: relative;
+      z-index: 2;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 12px;
+      padding: 10px 20px;
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      font-weight: 600;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+
+    /* MAIN MENU */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, var(--blue-light), var(--yellow-light));
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .card-text {
+      max-width: 60%;
+      margin-bottom: 15px;
+    }
+    .card h2 {
+      color: var(--blue);
+      margin-top: 0;
+    }
+    .card p {
+      color: var(--muted);
+    }
+    .card img {
+      width: 35%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .link-btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .link-btn:hover {
+      background: #2563eb;
+    }
+
+    /* QUIZ SECTION */
+    #quiz-section {
+      display: none;
+      margin-top: 40px;
+    }
+    .quiz-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px;
+      border: 2px solid var(--blue-light);
+      box-shadow: 0 4px 16px rgba(29,78,216,0.1);
+    }
+    .quiz-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .progress { height: 10px; background: var(--blue-light); border-radius: 6px; overflow: hidden; flex: 1; margin-left: 10px; }
+    .progress > i { display: block; height: 100%; background: var(--yellow); width: 0%; }
+    .q-text { font-weight: 600; color: var(--blue); }
+    .choices { margin-top: 12px; display: grid; gap: 8px; }
+    .choice {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1.5px solid var(--blue-light);
+      background: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .choice:hover { background: var(--blue-light); }
+    .choice[data-state="selected"] { border-color: var(--yellow); background: var(--yellow-light); }
+    button {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button.secondary { background: var(--yellow); color: #000; }
+    .explain {
+      margin-top: 10px;
+      background: var(--blue-light);
+      border-left: 5px solid var(--blue);
+      padding: 8px;
+      border-radius: 8px;
+      color: #0f172a;
+    }
+    .score { color: var(--blue); font-weight: 700; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Materi dan Kuis Garis & Sudut</h1>
+      <div class="creator-box">
+        Destiana Putri Rahmayana<br>
+        B2B023051
+      </div>
+    </div>
+  </header>
+ <main class="container">
+    <div class="card">
+      <h2>Garis dan Sudut</h2>
+      <p>Materi ini membahas tentang garis dan sudut yang ada dalam kehidupan sehari-hari disajikan dalam animasi interaktif untuk memudahkan pemahaman siswa  </p>
+      <a href="https://www.canva.com/design/DAGzHzYSGig/HSe-roNC7tYqTnGdaF9pDg/edit?utm_content=DAGzHzYSGig&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="link-btn">Lihat video</a>
+       </div>
+  </main>
+  <main class="container">
+    <div class="card">
+      <h2>Buku Materi Garis dan Sudut</h2>
+      <a href="https://drive.google.com/file/d/10S8sWfPyiMJlnDyBNC4xYOvM3SSyg8zI/view?usp=sharing" target="_blank" class="link-btn">Lihat buku</a>
+       </div>
+  </main>
+  <main class="container">
+    <section id="menu">
+      <div class="card">
+        <div class="card-text">
+          <h2>Kuis Garis dan Sudut</h2>
+          <a href="#quiz-section" class="link-btn" onclick="showQuiz()">Mulai Kuis</a>
+        </div>
+        <img src="garisudut.jpeg" alt="Ilustrasi garis dan sudut">
+      </div>
+    </section>
+    <section id="quiz-section">
+      <div class="quiz-card">
+        <div class="quiz-head">
+          <div>
+            <div class="small">Kuis Garis & Sudut</div>
+            <div class="score" id="score-display">Skor: 0 / 8</div>
+          </div>
+          <div style="display:flex;align-items:center;min-width:150px">
+            <div class="small">Progress</div>
+            <div class="progress"><i id="progress-bar"></i></div>
+          </div>
+        </div>
+        <div id="quiz-area"></div>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button id="prev-btn" class="secondary">Sebelumnya</button>
+          <button id="next-btn">Berikutnya</button>
+          <button id="submit-btn" style="display:none">Kirim Hasil</button>
+          <button id="reset-btn" class="secondary" style="margin-left:auto">Ulangi</button>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="result-panel" style="display:none;margin-top:20px;">
+        <div id="result-text"></div>
+        <div id="result-details" style="margin-top:10px"></div>
+      </div>
+    </section>
+  </main>    
+  </main>
+  <main class="container">
+    <div>
+      <div class="card">
+       Destiana Putri Rahmayana<br>
+       B2B023051
+      </div>
+  </main>
+
+  <footer>© 2025 — Website Interaktif Matematika | Destiana Putri Rahmayana</footer>
+  
+  <script>
+    function showQuiz(){
+      document.getElementById('quiz-section').style.display = 'block';
+    }
+
+    const quiz = [
+      {q:'Jika dua garis sejajar dipotong sebuah garis transversal, sudut yang berada pada posisi yang sama disebut?',choices:['Sudut berpelurus','Sudut bersebrangan','Sudut koresponding (sejajar posisi)','Sudut komplementer'],ans:2,explain:'Sudut pada posisi sebanding disebut sudut koresponding.'},
+      {q:'Sudut yang besarnya 90° disebut…',choices:['Sudut lancip','Sudut siku-siku','Sudut tumpul','Sudut refleks'],ans:1,explain:'Sudut siku-siku memiliki besar 90°.'},
+      {q:'Jika satu sudut 70°, maka sudut komplemennya adalah…',choices:['20°','30°','110°','100°'],ans:0,explain:'Sudut komplemen berjumlah 90°, jadi 90−70=20°.'},
+      {q:'Dua sudut berpelurus mempunyai jumlah…',choices:['90°','180°','360°','270°'],ans:1,explain:'Sudut berpelurus jumlahnya 180°.'},
+      {q:'Jika dua garis berpotongan dan membentuk sudut 40°, maka sudut yang bersebrangan…',choices:['lebih kecil','sama besar','lebih besar','tidak dapat ditentukan'],ans:1,explain:'Sudut bersebrangan (vertikal) selalu sama besar.'},
+      {q:'Sudut yang lebih besar dari 90° tetapi kurang dari 180° disebut…',choices:['Sudut lancip','Sudut siku-siku','Sudut tumpul','Sudut refleks'],ans:2,explain:'Sudut tumpul memiliki besar antara 90°–180°.'},
+      {q:'Jika sudut A dan B berjumlah 180° dan A=3x, B=2x, maka x=?',choices:['20','36','60','45'],ans:1,explain:'3x+2x=180 → x=36°.'},
+      {q:'Sebuah garis lurus membentuk sudut 180°. Sudut ini disebut…',choices:['Sudut lurus','Sudut tumpul','Sudut refleks','Sudut nol'],ans:0,explain:'Sudut lurus = 180°.'}
+    ];
+
+    let current = 0;
+    const answers = Array(quiz.length).fill(null);
+    const quizArea = document.getElementById('quiz-area');
+    const scoreDisplay = document.getElementById('score-display');
+    const progressBar = document.getElementById('progress-bar');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const resultText = document.getElementById('result-text');
+    const resultDetails = document.getElementById('result-details');
+
+    function renderQuestion(i){
+      const item = quiz[i];
+      quizArea.innerHTML = `<div class='question'><div class='q-text'>${i+1}. ${item.q}</div></div>`;
+      const choiceDiv = document.createElement('div');
+      choiceDiv.className = 'choices';
+      item.choices.forEach((c,idx)=>{
+        const btn=document.createElement('button');
+        btn.className='choice';
+        btn.textContent=c;
+        if(answers[i]===idx) btn.dataset.state='selected';
+        btn.onclick=()=>{answers[i]=idx;choiceDiv.querySelectorAll('.choice').forEach(e=>e.removeAttribute('data-state'));btn.dataset.state='selected';updateProgress();};
+        choiceDiv.appendChild(btn);
+      });
+      quizArea.appendChild(choiceDiv);
+      prevBtn.disabled=(i===0);
+      nextBtn.style.display=(i===quiz.length-1)?'none':'inline-block';
+      submitBtn.style.display=(i===quiz.length-1)?'inline-block':'none';
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const pct=(current/(quiz.length-1))*100;
+      progressBar.style.width=pct+'%';
+      scoreDisplay.textContent=`Skor: ${calculateScore()} / ${quiz.length}`;
+    }
+
+    function calculateScore(){
+      let s=0;for(let i=0;i<quiz.length;i++){if(answers[i]===quiz[i].ans)s++;}return s;
+    }
+
+    prevBtn.onclick=()=>{if(current>0)current--;renderQuestion(current);};
+    nextBtn.onclick=()=>{if(current<quiz.length-1)current++;renderQuestion(current);};
+    submitBtn.onclick=()=>showResults();
+    resetBtn.onclick=()=>{if(confirm('Ulangi kuis?')){answers.fill(null);current=0;resultPanel.style.display='none';renderQuestion(0);}};
+
+    function showResults(){
+      const score=calculateScore();
+      resultPanel.style.display='block';
+      resultText.innerHTML=`<strong>Hasil Akhir:</strong> ${score} dari ${quiz.length} soal`;
+      resultDetails.innerHTML='';
+      quiz.forEach((item,i)=>{
+        const div=document.createElement('div');
+        div.innerHTML=`<div><strong>${i+1}. ${item.q}</strong></div><div class='small'>Jawaban kamu: ${answers[i]!=null?item.choices[answers[i]]:'Belum dijawab'}</div><div class='small'>Jawaban benar: ${item.choices[item.ans]}</div><div class='explain'>${item.explain}</div>`;
+        div.style.marginTop='10px';
+        resultDetails.appendChild(div);
+      });
+      resultPanel.scrollIntoView({behavior:'smooth'});
+    }
+
+    renderQuestion(current);
+  </script>
+</body>
+</html>
